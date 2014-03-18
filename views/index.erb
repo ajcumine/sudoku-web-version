@@ -6,6 +6,7 @@
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <h1>Life is too short to Sudoku</h1>
   <div id="sudoku">
     <% 3.times do |row| %>
       <div class="row">
@@ -15,7 +16,7 @@
               <div class="cell-row">
                 <% 3.times do |cell| %>
                   <div class="cell">
-                    <input type="text">
+                    <input type="text" maxlength="1" autocomplete="off">
                   </div>
                 <% end %>
               </div>
