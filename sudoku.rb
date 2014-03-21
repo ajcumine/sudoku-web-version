@@ -16,13 +16,13 @@ def random_sudoku
   sudoku.to_s.chars
 end
 
-def puzzle(sudoku)
-  sudoku.map { |e| rand > 0.4 ? 0 : e }
+def puzzle(sudoku, difficulty)
+  sudoku.map { |e| rand > difficulty ? 0 : e }
 end
 
 get '/' do
   prepare_to_check_solution
-  generate_new_puzzle_if_necessary
+  generate_new_puzzle_if_necessary(0.4)
   @current_solution = session[:current_solution] || session[:puzzle]
   @solution = session[:solution]
   @puzzle = session[:puzzle]
@@ -41,6 +41,12 @@ post '/' do
   redirect to('/')
 end
 
+post '/set-difficulty' do
+  session[:solution] = nil
+  generate_new_puzzle_if_necessary(params[:difficulty].to_f)
+  redirect to('/')
+end
+
 def box_order_to_row_order(cells)
   boxes = cells.each_slice(9).to_a
   (0..8).to_a.inject([]) {|memo, i|
@@ -55,11 +61,11 @@ def box_order_to_row_order(cells)
   }
 end
 
-def generate_new_puzzle_if_necessary
-  return if session[:current_solution]
+def generate_new_puzzle_if_necessary(difficulty)
+  return if session[:current_solution] && session[:solution] && session[:solution] 
   sudoku = random_sudoku
   session[:solution] = sudoku
-  session[:puzzle] = puzzle(sudoku)
+  session[:puzzle] = puzzle(sudoku, difficulty)
   session[:current_solution] = session[:puzzle]
 end
 

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>SSSSSSUDOKU</title>
+  <title>SudoKraft</title>
   <link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
 </head>
   <body><link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
@@ -29,6 +29,11 @@
       <% end %>
       <button>Check solution</button>
     </form>
+    <form action="/set-difficulty" method="post">>
+      <button name="difficulty" value="0.6">Easy</button>
+      <button name="difficulty" value="0.5">Medium</button>
+      <button name="difficulty" value="0.4">Hard</button>
+    </form> 
   </div>
 </body>
 </html>
