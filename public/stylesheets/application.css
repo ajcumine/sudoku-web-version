@@ -3,16 +3,54 @@ div.box, div.cell {
 }
 
 .cell input {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
+  outline-style: solid;
+  outline-width: 1px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  text-align: center;
+}
+
+.box {
+  outline-style: solid;
+  outline-width: 5px;
 }
 
 #sudoku {
   font-size: 0;
   text-align: center;
+  position: relative;
+  top: 100px;
 }
 
 body {
   text-align: center;
   font-family: Arial;
+  background-image: url('/images/creeper.jpg');
+  background-size: cover;
+}
+
+.incorrect {
+  background-color: #33FF33;
+}
+
+.value-provided {
+  background-color: #DDD;
+}
+
+#flash {
+  margin: 20px;
+  font-family: 'Press Start 2P', cursive;
+  color: #33FF33;
+  position: relative;
+  top: 50px;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: 'Press Start 2P', cursive;
+  color: #33FF33;
+  position: relative;
+  top: 50px;
 }
